@@ -10,7 +10,7 @@ namespace Core.Events
     /// <summary>
     /// Model wydarzenia
     /// </summary>
-    class Event : IEvent
+    public class Event : IEvent
     {
         public string Title { get; set; }
         public string Comment { get; set; }
