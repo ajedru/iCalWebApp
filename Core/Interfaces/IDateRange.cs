@@ -1,12 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Interfaces
 {
-	public interface IDateRange
-	{
-	}
+    /// <summary>
+    /// Interfejs służący do opisania czasu zdarzenia [od - do]
+    /// </summary>
+    public interface IDateRange
+    {
+        DateTime From { get; set; }
+        DateTime To { get; set; }
+        TimeZoneInfo TimeZone(); 
+
+        string DateTime { get; set; }
+    }
 }
