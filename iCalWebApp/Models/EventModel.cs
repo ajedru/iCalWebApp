@@ -7,7 +7,7 @@ using Core.Interfaces;
 
 namespace iCalWebApp.Models
 {
-    class EventModel : IEvent
+    public class EventModel : IEvent
     {
         public string Title { get; set; }
         public string Comment { get; set; }
