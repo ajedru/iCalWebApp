@@ -9,8 +9,7 @@ namespace Core.Interfaces
     {
         DateTime From { get; set; }
         DateTime To { get; set; }
-        TimeZoneInfo TimeZone(); 
-
-        string DateTime { get; set; }
+       
+        TimeSpan Duration { get; }
     }
 }
