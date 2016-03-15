@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iCalWebApp", "iCalWebApp\iCalWebApp.csproj", "{341B3E84-65FF-4D10-BD63-ACB2FD0130E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreTests", "CoreTests\CoreTests.csproj", "{33A26459-FABF-4EE7-9C39-0488D95E92DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Tests", "CoreTests\Core.Tests.csproj", "{33A26459-FABF-4EE7-9C39-0488D95E92DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
