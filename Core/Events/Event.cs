@@ -1,22 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Core.Interfaces;
 
 namespace Core.Events
 {
-    /// <summary>
-    /// Model wydarzenia
-    /// </summary>
-    public class Event : IEvent
-    {
-        public string Title { get; set; }
-        public string Comment { get; set; }
+	/// <summary>
+	/// Model wydarzenia
+	/// </summary>
+	public class Event : IEvent
+	{
+		private readonly Guid guid;
 
-        public IDateRange DateRange { get; set; }
+		public Event(string title, string comment, IDateRange dateRange, DateTime creationDate, Guid guid)
+		{
+			Title = title;
+			Comment = comment;
+			DateRange = dateRange;
+			CreationDate = creationDate;
+			this.guid = guid;
+		}
 
-        public DateTime CreationDate { get; set; }
-    }
+		public string Title { get; set; }
+		public string Comment { get; set; }
+
+		public IDateRange DateRange { get; set; }
+
+		public DateTime CreationDate { get; set; }
+
+		public Guid Guid
+		{
+			get { return guid; }
+		}
+	}
 }
