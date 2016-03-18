@@ -1,3 +1,2 @@
 language: csharp
 solution: iCalWebApp.sln
-DebugSymbols: False 
