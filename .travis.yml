@@ -2,3 +2,7 @@ language: csharp
 solution: iCalWebApp.sln
 notifications:
   hipchat: 0c48e8ed26ddb78e6c1e883c23ee41@Builds
+before_install:
+  - pip install codecov
+after_success:
+  - codecov
