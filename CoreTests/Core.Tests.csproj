@@ -6,8 +6,8 @@
     <ProjectGuid>{33A26459-FABF-4EE7-9C39-0488D95E92DA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CoreTests</RootNamespace>
-    <AssemblyName>CoreTests</AssemblyName>
+    <RootNamespace>Core.Tests</RootNamespace>
+    <AssemblyName>Core.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,6 +36,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NCover, Version=0.1.1.38188, Culture=neutral, PublicKeyToken=a6093b7d3ebdf001">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Application\bin\NCover.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.2.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Application\bin\nunit.framework.dll</HintPath>
@@ -52,6 +56,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Events\EventCollectionTests.cs" />
     <Compile Include="Events\DateRangeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

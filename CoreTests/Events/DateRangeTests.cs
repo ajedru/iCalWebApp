@@ -1,9 +1,9 @@
 ﻿using System;
+using Core.Events;
 using NUnit.Framework;
 
-namespace Core.Events.Tests
+namespace Core.Tests.Events
 {
-	
 	[TestFixture]
 	public class DateRangeTests
 	{
