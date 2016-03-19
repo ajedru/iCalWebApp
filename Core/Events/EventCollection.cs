@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core.Interfaces;
 
-namespace Core.Interfaces
+namespace Core.Events
 {
 	/// <summary>
 	/// Implementacja interfejsu kolekcji jedynie na potrzeby obiekty typu IEvent
@@ -11,7 +12,7 @@ namespace Core.Interfaces
 	/// </summary>
 	public class EventCollection : ICollection<IEvent>
 	{
-		private IList<IEvent> events = new List<IEvent>();
+		private ICollection<IEvent> events = new HashSet<IEvent>();
 		private bool isReadOnly = false;
 
 		public IEnumerator<IEvent> GetEnumerator()
@@ -29,7 +30,15 @@ namespace Core.Interfaces
 
 		public void Add(IEvent item)
 		{
-			events.Add(item);
+			if (Contains(item.Guid))
+			{
+				Remove(item);
+				Add(item);
+			}
+			else
+			{
+				events.Add(item);
+			}
 		}
 
 		public void Clear()
@@ -39,14 +48,18 @@ namespace Core.Interfaces
 
 		public bool Contains(IEvent item)
 		{
+			return Contains(item.Guid);
+		}
+
+		public bool Contains(Guid guid)
+		{
 			foreach (var ev in events)
 			{
-				if (ev.Guid == item.Guid)
+				if (ev.Guid == guid)
 				{
 					return true;
 				}
 			}
-
 			return false;
 		}
 
