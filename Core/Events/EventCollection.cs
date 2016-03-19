@@ -12,8 +12,13 @@ namespace Core.Events
 	/// </summary>
 	public class EventCollection : ICollection<IEvent>
 	{
-		private ICollection<IEvent> events = new HashSet<IEvent>();
-		private bool isReadOnly = false;
+		private HashSet<IEvent> events = new HashSet<IEvent>();
+		private bool isReadOnly;
+
+		public EventCollection()
+		{
+			isReadOnly = false;
+		}
 
 		public IEnumerator<IEvent> GetEnumerator()
 		{
@@ -28,17 +33,28 @@ namespace Core.Events
 			return GetEnumerator();
 		}
 
+		public IEvent Get(Guid guid)
+		{
+			foreach (var ev in events)
+			{
+				if (ev.Guid == guid)
+				{
+					return ev;
+				}
+			}
+
+			return null;
+		}
+
 		public void Add(IEvent item)
 		{
 			if (Contains(item.Guid))
 			{
 				Remove(item);
-				Add(item);
+				
 			}
-			else
-			{
-				events.Add(item);
-			}
+			
+			events.Add(item);
 		}
 
 		public void Clear()
@@ -70,7 +86,9 @@ namespace Core.Events
 
 		public bool Remove(IEvent item)
 		{
-			return events.Remove(item);
+			int succeed = events.RemoveWhere(ev => ev.Guid == item.Guid);
+
+			return succeed > 0;
 		}
 
 		public int Count
