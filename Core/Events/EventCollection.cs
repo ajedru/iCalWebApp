@@ -15,9 +15,17 @@ namespace Core.Events
 		private HashSet<IEvent> events = new HashSet<IEvent>();
 		private bool isReadOnly;
 
+		public TimeZoneInfo TimeZone { get; private set; }
+
 		public EventCollection()
 		{
 			isReadOnly = false;
+			TimeZone = TimeZoneInfo.Utc;
+		}
+
+		public EventCollection(TimeZoneInfo timeZone)
+		{
+			TimeZone = timeZone;
 		}
 
 		public IEnumerator<IEvent> GetEnumerator()
