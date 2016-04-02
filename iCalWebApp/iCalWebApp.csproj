@@ -149,12 +149,23 @@
     <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker.min.css.map" />
     <Content Include="Content\bootstrap-datepicker.css.map" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="scripts\dateObject.coffee" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\bootstrap-datepicker.js" />
     <Content Include="scripts\bootstrap-datepicker.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\date.js" />
+    <Content Include="scripts\dateObject.js">
+      <DependentUpon>dateObject.coffee</DependentUpon>
+    </Content>
+    <Content Include="scripts\dateObject.min.js">
+      <DependentUpon>dateObject.js</DependentUpon>
+    </Content>
     <Content Include="scripts\jquery-2.2.1.js" />
     <Content Include="scripts\jquery-2.2.1.min.js" />
     <Content Include="scripts\jquery-2.2.1.min.map" />
@@ -231,11 +242,17 @@
     <Content Include="scripts\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
-    <None Include="Views\EventsList\Create.cshtml" />
+    <Content Include="scripts\Utils.coffee" />
+    <Content Include="scripts\Utils.js">
+      <DependentUpon>Utils.coffee</DependentUpon>
+    </Content>
+    <Content Include="scripts\Utils.min.js">
+      <DependentUpon>Utils.js</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Views\EventsList\Delete.cshtml" />
     <Content Include="Views\EventsList\Edit.cshtml" />
-    <Content Include="Views\EventsList\Create_old.cshtml" />
+    <Content Include="Views\EventsList\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />

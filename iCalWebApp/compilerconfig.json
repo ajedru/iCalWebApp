@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "scripts/dateObject.js",
+    "inputFile": "scripts/dateObject.coffee"
+  },
+  {
+    "outputFile": "scripts/Utils.js",
+    "inputFile": "scripts/Utils.coffee"
+  }
+]
