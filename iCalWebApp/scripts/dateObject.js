@@ -2,32 +2,18 @@
 (function() {
   var container, dateInput;
 
-  window.dateChanged = function() {
-    var date, input;
-    date = $('input[id="dateFrom"]').val();
+  window.dateChanged = function(selected) {
+    var input;
     input = $('input[id="dateTo"]');
-    input.datepicker("setStartDate", date);
-    return input.datepicker("update", date);
+    return input.data("DateTimePicker").minDate(selected.date);
   };
 
-  $(document).ready((function() {
-    debugger;
-  })(), dateInput = $('input[id="dateFrom"]'), !($('.dateRangePicker .form-group').length > 0) ? container = $('.dateRangePicker').parent() : container = "body", (function() {
-    debugger;
-  })(), dateInput.datepicker({
-    format: "dd/mm/yyyy",
-    container: container,
-    todayHighlight: true,
-    autoclose: true,
-    todayBtn: true,
-    startDate: new Date()
-  }).on('changeDate', dateChanged), dateInput = $('input[id="dateTo"]'), dateInput.datepicker({
-    format: "dd/mm/yyyy",
-    container: container,
-    todayHighlight: true,
-    autoclose: true,
-    todayBtn: true,
-    startDate: new Date()
+  $(document).ready(dateInput = $('input[id="dateFrom"]'), !($('.dateRangePicker .form-group').length > 0) ? container = $('.dateRangePicker').parent() : container = "body", dateInput.datetimepicker({
+    format: "DD/MM/YYYY HH:mm",
+    minDate: new moment()
+  }).on('dp.change', dateChanged), dateInput = $('input[id="dateTo"]'), dateInput.datetimepicker({
+    format: "DD/MM/YYYY HH:mm",
+    minDate: new moment()
   }));
 
 }).call(this);

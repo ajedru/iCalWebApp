@@ -1,38 +1,25 @@
 ﻿# CoffeeScript
-window.dateChanged = ->
-	date = $('input[id="dateFrom"]').val()
+window.dateChanged = (selected) ->
 	input = $('input[id="dateTo"]')
-	input.datepicker("setStartDate", date)
-	input.datepicker("update", date)
+	input.data("DateTimePicker").minDate(selected.date);
 
 $(document).ready(
-	debugger
 	dateInput = $('input[id="dateFrom"]')
 
 	unless $('.dateRangePicker .form-group').length > 0
 		container = $('.dateRangePicker').parent()
 	else 
 		container = "body"
-		
-	debugger
 	
-	dateInput.datepicker(
-		format: "dd/mm/yyyy"
-		container: container
-		todayHighlight: true
-		autoclose: true
-		todayBtn: true
-		startDate: new Date()
-	).on('changeDate', dateChanged)
+	dateInput.datetimepicker(
+		format: "DD/MM/YYYY HH:mm"
+		minDate: new moment()
+	).on('dp.change', dateChanged)
 	
 	dateInput = $('input[id="dateTo"]')
 
-	dateInput.datepicker(
-		format: "dd/mm/yyyy"
-		container: container
-		todayHighlight: true
-		autoclose: true
-		todayBtn: true
-		startDate: new Date()
+	dateInput.datetimepicker(
+		format: "DD/MM/YYYY HH:mm"
+		minDate: new moment()
 	)
 )

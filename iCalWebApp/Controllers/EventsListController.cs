@@ -58,7 +58,6 @@ namespace iCalWebApp.Controllers
 			{
 				if (ModelState.IsValid)
 				{
-					model.DateRange = new DateRange(new DateTime(2016, 3, 15), new DateTime(2016, 3, 16));
 					AddEvent(model);
 				}
 

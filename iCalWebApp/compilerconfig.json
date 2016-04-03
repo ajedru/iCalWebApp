@@ -6,5 +6,9 @@
   {
     "outputFile": "scripts/Utils.js",
     "inputFile": "scripts/Utils.coffee"
+  },
+  {
+    "outputFile": "Content/_bootstrap-datetimepicker.css",
+    "inputFile": "Content/_bootstrap-datetimepicker.less"
   }
 ]
