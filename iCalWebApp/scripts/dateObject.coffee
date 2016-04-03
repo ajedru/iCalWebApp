@@ -5,11 +5,6 @@ window.dateChanged = (selected) ->
 
 $(document).ready(
 	dateInput = $('input[id="dateFrom"]')
-
-	unless $('.dateRangePicker .form-group').length > 0
-		container = $('.dateRangePicker').parent()
-	else 
-		container = "body"
 	
 	dateInput.datetimepicker(
 		format: "DD/MM/YYYY HH:mm"
