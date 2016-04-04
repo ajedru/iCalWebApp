@@ -1,5 +1,8 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using Core.Events;
+using Core.Interfaces;
 
 namespace iCalWebApp.Models
 {
@@ -7,9 +10,9 @@ namespace iCalWebApp.Models
 	/// Oddzielna klasa modelu na potrzeby Web, ażeby nie mieszać bazowej funkcjonalności Core
 	/// z jej reprezentacją w postaci strony internetowej
 	/// </summary>
-	public class EventModel //: IEvent
+	public class EventModel: IEvent
 	{
-		private readonly Guid guid = Guid.NewGuid();
+		private Guid guid;
 
 		public EventModel()
 		{
@@ -35,11 +38,13 @@ namespace iCalWebApp.Models
 		/// <summary>
 		/// Obiekt zakresu czasu trwania zdarzenia
 		/// </summary>
-		public DateRangeModel DateRange { get; set; }
+		public DateRangeModel DateRangeModel { get; set; }
 
 		/// <summary>
 		/// Czas stworzenia eventu
 		/// </summary>
+		/// 
+		[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
 		public DateTime CreationDate { get; set; }
 
 		/// <summary>
@@ -48,6 +53,21 @@ namespace iCalWebApp.Models
 		public Guid Guid
 		{
 			get { return guid; }
+			set { guid = value; }
+		}
+
+		public IDateRange DateRange
+		{
+			get { return DateRangeModel; }
+
+			set
+			{
+				DateRangeModel range = new DateRangeModel();
+				range.From = value.From;
+				range.To = value.To;
+
+				DateRangeModel = range;
+			}
 		}
 
 		/// <summary>
@@ -58,5 +78,6 @@ namespace iCalWebApp.Models
 		{
 			return new Event(Title, Comment, DateRange, CreationDate, guid);
 		}
+
 	}
 }

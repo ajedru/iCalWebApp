@@ -23,7 +23,7 @@ namespace iCalWebApp.Controllers
 		/// <param name="model">obiekt modelu do dodania</param>
 		private void AddEvent(EventModel model)
 		{
-			List<EventModel> events = FetchEvents();
+			EventCollectionModel events = FetchEvents();
 
 			events.Add(model);
 		}
@@ -32,15 +32,15 @@ namespace iCalWebApp.Controllers
 		/// Pobiera zapisaną w sesji listę obiektów EventModel
 		/// </summary>
 		/// <returns>Zwraca listę EventModel</returns>
-		private List<EventModel> FetchEvents()
+		private EventCollectionModel FetchEvents()
 		{
 			if (Session["Events"] == null)
 			{
-				Session["Events"] = new List<EventModel>();
+				Session["Events"] = new EventCollectionModel();
 				return FetchEvents();
 			}
 
-			return (List<EventModel>) Session["Events"];
+			return (EventCollectionModel) Session["Events"];
 
 		}
 	  
@@ -70,20 +70,27 @@ namespace iCalWebApp.Controllers
 		}
 
 		// GET: EventsList/Edit/5
-		public ActionResult Edit(int id)
+		public ActionResult Edit(Guid id)
 		{
-			return View();
+			EventModel model = FetchEvents().Get(id);
+			return View(model);
 		}
 
 		// POST: EventsList/Edit/5
 		[HttpPost]
-		public ActionResult Edit(int id, FormCollection collection)
+		public ActionResult Edit(EventModel model, FormCollection collection)
 		{
 			try
 			{
-				// TODO: Add update logic here
+				//EventModel old = FetchEvents().Get(id);
+				//model.Guid = old.Guid;
+				if (ModelState.IsValid)
+				{
+					AddEvent(model);
+				}
 
 				return RedirectToAction("Index");
+				
 			}
 			catch
 			{
@@ -97,21 +104,18 @@ namespace iCalWebApp.Controllers
 		/// <param name="model">Model do usunięcia</param>
 		/// <returns></returns>
 		// GET: EventsList/Delete/5
-		public ActionResult Delete(int id)
+		public ActionResult Delete(Guid id)
 		{
-			List<EventModel> events = FetchEvents();
-			//events.Remove(model);
-
-			return View(events);
+			return View(FetchEvents().Get(id));
 		}
 
 		// POST: EventsList/Delete/5
 		[HttpPost]
-		public ActionResult Delete(int id, FormCollection collection)
+		public ActionResult Delete(Guid id, FormCollection collection)
 		{
 			try
 			{
-				// TODO: Add delete logic here
+				FetchEvents().Remove(id);
 
 				return RedirectToAction("Index");
 			}

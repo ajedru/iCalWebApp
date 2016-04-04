@@ -1,8 +1,98 @@
-﻿@model dynamic
+﻿@model iCalWebApp.Models.EventModel
 
 @{
-    ViewBag.Title = "Edit Event";
-    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
+<link rel="stylesheet" href="../../Content/bootstrap-iso.css" />
+<link rel="stylesheet" href="../../Content/bootstrap-datetimepicker.css" />
+<link rel="stylesheet" href="../../Content/font-awesome.min.css"/>
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>EventModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class="fa fa-commenting-o">
+						</i>
+					</div>
+					@Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class="fa fa-comment-o">
+						</i>
+					</div>
+					@Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+				</div>
+			</div>
+		</div>
+	    <div class="dateRangePicker">
+
+		    <div class="form-group">
+			    @Html.LabelFor(model => model.DateRangeModel.From, htmlAttributes : new { @class = "control-label col-md-2", @for = "dateFrom" })
+			    <div class="col-md-10">
+				    <div class="input-group">
+					    <div class="input-group-addon">
+						    <i class="fa fa-calendar-plus-o">
+						    </i>
+					    </div>
+					    @Html.EditorFor(model => model.DateRangeModel.From, new {@Value = Model.DateRange.From.ToString("dd/MM/yyyy HH:mm"), htmlAttributes = new { @class = "form-control", @id = "dateFrom", @placeholder = "DD/MM/YYYY HH:mm", @type = "text" } })
+					    @Html.ValidationMessageFor(model => model.DateRangeModel.From, "", new { @class = "text-danger" })
+				    </div>
+			    </div>
+		    </div>
+
+		    <div class="form-group">
+			    @Html.LabelFor(model => model.DateRangeModel.To, htmlAttributes : new { @class = "control-label col-md-2", @for = "dateTo" })
+			    <div class="col-md-10">
+				    <div class="input-group">
+					    <div class="input-group-addon">
+						    <i class="fa fa-calendar-plus-o">
+						    </i>
+					    </div>
+					    @Html.EditorFor(model => model.DateRangeModel.To, new { @Value = Model.DateRange.To.ToString("dd/MM/yyyy HH:mm"), htmlAttributes = new { @class = "form-control", @id = "dateTo", @placeholder = "DD/MM/YYYY HH:mm", @type = "text" } })
+					    @Html.ValidationMessageFor(model => model.DateRangeModel.To, "", new { @class = "text-danger" })
+				    </div>
+			    </div>
+		    </div>
+	    </div>
+		@Html.HiddenFor(model => model.Guid)
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Save" class="btn btn-default" />
+				</div>
+			</div>
+		</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script type="text/javascript" src="~/scripts/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="~/scripts/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="~/scripts/dateObject.js"></script>

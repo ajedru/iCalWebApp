@@ -13,10 +13,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DateRange.From)
+            @Html.DisplayNameFor(model => model.DateRangeModel.From)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateRange.To)
+            @Html.DisplayNameFor(model => model.DateRangeModel.To)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -33,10 +33,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.DateRange.From)
+            @Html.DisplayFor(modelItem => item.DateRangeModel.From)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateRange.To)
+            @Html.DisplayFor(modelItem => item.DateRangeModel.To)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
@@ -48,8 +48,8 @@
             @Html.DisplayFor(modelItem => item.CreationDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new {  id=item.Guid  }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Guid })
         </td>
     </tr>
 }
