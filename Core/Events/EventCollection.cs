@@ -12,7 +12,7 @@ namespace Core.Events
 	/// </summary>
 	public class EventCollection : ICollection<IEvent>
 	{
-		private HashSet<IEvent> events = new HashSet<IEvent>();
+		protected HashSet<IEvent> events = new HashSet<IEvent>();
 		private bool isReadOnly;
 
 		public TimeZoneInfo TimeZone { get; private set; }
@@ -97,6 +97,17 @@ namespace Core.Events
 			int succeed = events.RemoveWhere(ev => ev.Guid == item.Guid);
 
 			return succeed > 0;
+		}
+
+		public bool Remove(Guid id)
+		{
+			IEvent ev = Get(id);
+			if (ev == null)
+			{
+				return false;
+			}
+
+			return Remove(ev);
 		}
 
 		public int Count
