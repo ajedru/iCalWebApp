@@ -1,4 +1,10 @@
 language: csharp
 solution: iCalWebApp.sln
+install:
+  - nuget restore iCalWebApp.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release iCalWebApp.sln
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./Application/bin/Core.Tests.dll
 notifications:
   hipchat: 0c48e8ed26ddb78e6c1e883c23ee41@Builds
