@@ -17,11 +17,10 @@ namespace Core.Tests.Events
 
 			DateTime from = new DateTime(2000, 06, 10);
 			DateTime to = new DateTime(2000, 06, 20);
+			DateTime creationDate = DateTime.Now;
 
 			Guid guid = Guid.NewGuid();
 
-			DateTime creationDate = DateTime.Now;
-			
 			IDateRange DateRange = new DateRange(from, to);
 
 			Event myEvent = new Event(title, comment, DateRange, creationDate, guid);

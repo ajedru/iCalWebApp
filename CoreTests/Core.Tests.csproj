@@ -58,7 +58,7 @@
   <ItemGroup>
     <Compile Include="Events\EventCollectionTests.cs" />
     <Compile Include="Events\DateRangeTests.cs" />
-    <Compile Include="Events\EventTest.cs" />
+    <Compile Include="Events\EventTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
