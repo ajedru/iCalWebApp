@@ -35,6 +35,8 @@ namespace iCalWebApp.Models
 		/// </summary>
 		public string Comment { get; set; }
 
+		public int AlarmTime { get; set; }
+
 		/// <summary>
 		/// Obiekt zakresu czasu trwania zdarzenia
 		/// </summary>
@@ -54,6 +56,11 @@ namespace iCalWebApp.Models
 		{
 			get { return guid; }
 			set { guid = value; }
+		}
+
+		public bool HasAlarm()
+		{
+			return AlarmTime > 0;
 		}
 
 		public IDateRange DateRange
