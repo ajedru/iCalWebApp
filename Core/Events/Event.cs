@@ -19,17 +19,15 @@ namespace Core.Events
 			this.guid = guid;
 		}
 
-        public Event(string title, string comment, IDateRange dateRange, DateTime creationDate, Guid guid, int alarmTime)
-            : this(title, comment, dateRange, creationDate, guid)
-        { 
-            AlarmTime = alarmTime;
-        }
-        // Tomasz Papaj, konstruktor z alarmem
-
-
-        public string Title { get; set; }
+		public Event(string title, string comment, IDateRange dateRange, DateTime creationDate, Guid guid, int alarmTime)
+			: this(title, comment, dateRange, creationDate, guid)
+		{ 
+			AlarmTime = alarmTime;
+		}
+		
+		public string Title { get; set; }
 		public string Comment { get; set; }
-        public int AlarmTime { get; set; } // Tomasz Papaj, Alarm eventu w minutach
+		public int AlarmTime { get; set; } 
 
 		public IDateRange DateRange { get; set; }
 
@@ -40,11 +38,9 @@ namespace Core.Events
 			get { return guid; }
 		}
 
-        public Boolean HasAlarm()
-        {
-            if (AlarmTime > 0) return true;
-            else return false;
-        }
-        //Tomasz Papaj, metoda sprawdzajaca obecnosc alarmu
+		public Boolean HasAlarm()
+		{
+			return AlarmTime > 0;
+		}
 	}
 }
