@@ -44,13 +44,11 @@ namespace Core.Events
         { 
             AlarmTime = alarmTime;
         }
-        // Tomasz Papaj, konstruktor z alarmem
 
         public string Title { get; set; }
 
 		public string Comment { get; set; }
-
-        public int AlarmTime { get; set; } // Tomasz Papaj, Alarm eventu w minutach
+		public int AlarmTime { get; set; } 
 
 		public IDateRange DateRange { get; set; }
 
@@ -63,9 +61,7 @@ namespace Core.Events
 
         public Boolean HasAlarm()
         {
-            if (AlarmTime > 0) return true;
-            else return false;
+			return AlarmTime > 0;
         }
-        //Tomasz Papaj, metoda sprawdzajaca obecnosc alarmu
 	}
 }
