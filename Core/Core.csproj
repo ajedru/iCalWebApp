@@ -31,14 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="antlr.runtime">
-      <HintPath>D:\Downloads\DDay-iCal-1_0_2-BetaCandidate2-bin\antlr.runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="DDay.Collections">
-      <HintPath>D:\Downloads\DDay-iCal-1_0_2-BetaCandidate2-bin\DDay.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="DDay.iCal">
-      <HintPath>D:\Downloads\DDay-iCal-1_0_2-BetaCandidate2-bin\DDay.iCal.dll</HintPath>
+    <Reference Include="DDay.iCal, Version=1.0.2.575, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Application\bin\DDay.iCal.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,18 +48,13 @@
     <Compile Include="Events\DateRange.cs" />
     <Compile Include="Events\Event.cs" />
     <Compile Include="Events\EventCollection.cs" />
-    <Compile Include="Events\ParserFromICal.cs" />
-    <Compile Include="Events\ParserToICal.cs" />
+    <Compile Include="Parsers\Parser.cs" />
     <Compile Include="Interfaces\IDateRange.cs" />
     <Compile Include="Interfaces\IEvent.cs" />
     <Compile Include="Interfaces\IParser.cs" />
-    <Compile Include="Interfaces\IParserFromICal.cs" />
-    <Compile Include="Interfaces\IParserToICal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Parsers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
