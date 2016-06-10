@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DDay.iCal, Version=1.0.2.575, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Application\bin\DDay.iCal.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -132,6 +136,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\select2.css" />
+    <Content Include="Content\css\select2.min.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Site.css" />
@@ -251,6 +257,53 @@
     <Content Include="scripts\dateObject.min.js">
       <DependentUpon>dateObject.js</DependentUpon>
     </Content>
+    <Content Include="scripts\i18n\ar.js" />
+    <Content Include="scripts\i18n\az.js" />
+    <Content Include="scripts\i18n\bg.js" />
+    <Content Include="scripts\i18n\ca.js" />
+    <Content Include="scripts\i18n\cs.js" />
+    <Content Include="scripts\i18n\da.js" />
+    <Content Include="scripts\i18n\de.js" />
+    <Content Include="scripts\i18n\el.js" />
+    <Content Include="scripts\i18n\en.js" />
+    <Content Include="scripts\i18n\es.js" />
+    <Content Include="scripts\i18n\et.js" />
+    <Content Include="scripts\i18n\eu.js" />
+    <Content Include="scripts\i18n\fa.js" />
+    <Content Include="scripts\i18n\fi.js" />
+    <Content Include="scripts\i18n\fr.js" />
+    <Content Include="scripts\i18n\gl.js" />
+    <Content Include="scripts\i18n\he.js" />
+    <Content Include="scripts\i18n\hi.js" />
+    <Content Include="scripts\i18n\hr.js" />
+    <Content Include="scripts\i18n\hu.js" />
+    <Content Include="scripts\i18n\id.js" />
+    <Content Include="scripts\i18n\is.js" />
+    <Content Include="scripts\i18n\it.js" />
+    <Content Include="scripts\i18n\ja.js" />
+    <Content Include="scripts\i18n\km.js" />
+    <Content Include="scripts\i18n\ko.js" />
+    <Content Include="scripts\i18n\lt.js" />
+    <Content Include="scripts\i18n\lv.js" />
+    <Content Include="scripts\i18n\mk.js" />
+    <Content Include="scripts\i18n\ms.js" />
+    <Content Include="scripts\i18n\nb.js" />
+    <Content Include="scripts\i18n\nl.js" />
+    <Content Include="scripts\i18n\pl.js" />
+    <Content Include="scripts\i18n\pt-BR.js" />
+    <Content Include="scripts\i18n\pt.js" />
+    <Content Include="scripts\i18n\ro.js" />
+    <Content Include="scripts\i18n\ru.js" />
+    <Content Include="scripts\i18n\sk.js" />
+    <Content Include="scripts\i18n\sr-Cyrl.js" />
+    <Content Include="scripts\i18n\sr.js" />
+    <Content Include="scripts\i18n\sv.js" />
+    <Content Include="scripts\i18n\th.js" />
+    <Content Include="scripts\i18n\tr.js" />
+    <Content Include="scripts\i18n\uk.js" />
+    <Content Include="scripts\i18n\vi.js" />
+    <Content Include="scripts\i18n\zh-CN.js" />
+    <Content Include="scripts\i18n\zh-TW.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
     <Content Include="scripts\jquery-2.2.1.js" />
@@ -335,6 +388,14 @@
     <Content Include="scripts\moment.js" />
     <Content Include="scripts\moment.min.js" />
     <Content Include="scripts\npm.js" />
+    <Content Include="scripts\select2.js" />
+    <Content Include="scripts\select2.min.js" />
+    <Content Include="scripts\timeZoneSelect.js">
+      <DependentUpon>timeZoneSelect.coffee</DependentUpon>
+    </Content>
+    <Content Include="scripts\timeZoneSelect.min.js">
+      <DependentUpon>timeZoneSelect.js</DependentUpon>
+    </Content>
     <Content Include="scripts\Utils.coffee" />
     <Content Include="scripts\Utils.js">
       <DependentUpon>Utils.coffee</DependentUpon>
@@ -352,9 +413,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="App_Data\Config.cs" />
-    <Compile Include="Models\DateRangeModel.cs" />
-    <Compile Include="Models\EventCollectionModel.cs" />
-    <Compile Include="Models\EventModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -370,6 +428,7 @@
     <Content Include="Views\EventsList\Index.cshtml" />
     <Content Include="Views\EventsList\Edit.cshtml" />
     <Content Include="Views\EventsList\Delete.cshtml" />
+    <Content Include="scripts\timeZoneSelect.coffee" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -377,7 +436,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{9200e5f8-122e-4764-9c45-ba42b8b18807}</Project>

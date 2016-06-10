@@ -1,4 +1,4 @@
-﻿@model iCalWebApp.Models.EventModel
+﻿@model Core.Events.EventModel
 
 @{
 	ViewBag.Title = "Delete";
@@ -13,46 +13,46 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Title)
+           Title
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Comment)
+            Commentary
         </dt>
 
 	    <dd>
-		    @Html.DisplayFor(model => model.Comment)
+		    @Html.DisplayFor(model => model.Description)
 	    </dd>
 
 		<dt>
-			@Html.DisplayNameFor(model => model.DateRangeModel.From)
+			From
 		</dt>
 
 	    <dd>
-		    @Html.DisplayFor(model => model.DateRangeModel.From)
+		    @Html.DisplayFor(model => model.From)
 	    </dd>
 
 		<dt>
-			@Html.DisplayNameFor(model => model.DateRangeModel.To)
+			To
 		</dt>
 
 		<dd>
-			@Html.DisplayFor(model => model.DateRangeModel.To)
+			@Html.DisplayFor(model => model.To)
 		</dd>
 
 	    <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
+            Created
         </dt>
 
 	    <dd>
-		    @Html.DisplayFor(model => model.CreationDate)
+		    @Html.DisplayFor(model => model.Created)
 	    </dd>
 
-		@Html.HiddenFor(model => model.Guid)
+		@Html.HiddenFor(model => model.UID)
 
     </dl>
 

@@ -119,6 +119,9 @@
   color: inherit;
   font: inherit;
   margin: 0;
+  
+  max-width: 100%;
+  width: 100%;
 }
 .bootstrap-iso button {
   overflow: visible;

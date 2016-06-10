@@ -1,4 +1,4 @@
-﻿@model iCalWebApp.Models.EventModel
+﻿@model Core.Events.EventModel
 
 @{
 	ViewBag.Title = "CreateView";
@@ -6,83 +6,124 @@
 }
 
 <link rel="stylesheet" href="../../Content/bootstrap-iso.css" />
-<link rel="stylesheet" href="../../Content/bootstrap-datetimepicker.css"/>
+<link rel="stylesheet" href="../../Content/bootstrap-datetimepicker.css" />
 <link rel="stylesheet" href="../../Content/font-awesome.min.css" />
 
 <h2>@ViewBag.Title</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
 	@Html.AntiForgeryToken()
-	
+
 	<div class="form-horizontal">
-		<h4>EventModel</h4>
+		<h4>Event</h4>
 		<hr />
 		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-		<div class="form-group">
-			@Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				<div class="input-group">
-					<div class="input-group-addon">
-						<i class="fa fa-commenting-o">
-						</i>
+		<div class="list-group-item">
+			<div class="form-group">
+				@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					<div class="input-group">
+						<div class="input-group-addon">
+							<i class="fa fa-commenting-o">
+							</i>
+						</div>
+						@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
 					</div>
-					@Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-					@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					<div class="input-group">
+						<div class="input-group-addon">
+							<i class="fa fa-comment-o">
+							</i>
+						</div>
+						@Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="form-group">
-			@Html.LabelFor(model => model.Comment, htmlAttributes : new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				<div class="input-group">
-					<div class="input-group-addon">
-						<i class="fa fa-comment-o">
-						</i>
-					</div>
-					@Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
-					@Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
-				</div>
-			</div>
-		</div>
 		<div class="dateRangePicker">
-
-			<div class="form-group">
-				@Html.LabelFor(model => model.DateRange.From, htmlAttributes: new { @class = "control-label col-md-2", @for = "dateFrom" })
-				<div class="col-md-10">
-					<div class="input-group">
-						<div class="input-group-addon">
-							<i class="fa fa-calendar-plus-o">
-							</i>
+			<div class="list-group-item">
+				<div class="form-group">
+					@Html.LabelFor(model => model.From, "Start date", htmlAttributes: new { @class = "control-label col-md-2", @for = "dateFrom" })
+					<div class="col-md-10">
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-calendar-plus-o">
+								</i>
+							</div>
+							@Html.EditorFor(model => model.From, new { htmlAttributes = new { @class = "form-control", @id = "dateFrom", @placeholder = "MM/DD/YYYY", @type = "text" } })
+							@Html.ValidationMessageFor(model => model.From, "", new { @class = "text-danger" })
 						</div>
-						@Html.EditorFor(model => model.DateRangeModel.From, new { htmlAttributes = new { @class = "form-control", @id = "dateFrom", @placeholder = "MM/DD/YYYY", @type = "text" } })
-						@Html.ValidationMessageFor(model => model.DateRangeModel.From, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div class="form-group">
+					@Html.LabelFor(model => model.Start.TimeZoneName, "Timezone", htmlAttributes: new { @class = "control-label col-md-2", @for = "dateFrom.TimeZoneName" })
+					<div class="col-md-10">
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-calendar-plus-o">
+								</i>
+							</div>
+							@Html.DropDownListFor(model => model.Start.TimeZoneName,
+											new SelectList(new string[] { }),
+											htmlAttributes: new { @class = "form-control", @id = "timezone-select-from", @type = "text" })
+
+							@Html.ValidationMessageFor(model => model.Start.TimeZoneName, "", new { @class = "text-danger" })
+						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="form-group">
-				@Html.LabelFor(model => model.DateRangeModel.To, htmlAttributes : new { @class = "control-label col-md-2", @for = "dateTo"})
-				<div class="col-md-10">
-					<div class="input-group">
-						<div class="input-group-addon">
-							<i class="fa fa-calendar-plus-o">
-							</i>
+			<div class="list-group-item">
+				<div class="form-group">
+					@Html.LabelFor(model => model.To, "End date", htmlAttributes: new { @class = "control-label col-md-2", @for = "dateTo" })
+					<div class="col-md-10">
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-calendar-plus-o">
+								</i>
+							</div>
+							@Html.EditorFor(model => model.To, new { htmlAttributes = new { @class = "form-control", @id = "dateTo", @placeholder = "MM/DD/YYYY", @type = "text" } })
+							@Html.ValidationMessageFor(model => model.To, "", new { @class = "text-danger" })
 						</div>
-						@Html.EditorFor(model => model.DateRangeModel.To, new { htmlAttributes = new { @class = "form-control", @id = "dateTo", @placeholder = "MM/DD/YYYY", @type = "text" } })
-						@Html.ValidationMessageFor(model => model.DateRangeModel.To, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div class="form-group">
+					@Html.LabelFor(model => model.End.TimeZoneName, "Timezone", htmlAttributes: new { @class = "control-label col-md-2", @for = "dateTo.TimeZoneName" })
+					<div class="col-md-10">
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-calendar-plus-o">
+								</i>
+							</div>
+							@Html.DropDownListFor(model => model.End.TimeZoneName,
+												new SelectList(new string[] { }),
+												htmlAttributes: new { @class = "form-control", @id = "timezone-select-to", @type = "text" })
+
+							@Html.ValidationMessageFor(model => model.End.TimeZoneName, "", new { @class = "text-danger" })
+						</div>
 					</div>
 				</div>
 			</div>
+
 		</div>
-			<div class="form-group">
-				<div class="col-md-offset-2 col-md-10">
-					<input type="submit" value="Create" class="btn btn-default" />
-				</div>
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Create" class="btn btn-default" />
 			</div>
 		</div>
+	</div>
 
 }
 
@@ -94,4 +135,7 @@
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script type="text/javascript" src="~/scripts/moment-with-locales.min.js"></script>
 <script type="text/javascript" src="~/scripts/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="~/scripts/select2.js"></script>
+<script type="text/javascript" src="~/scripts/timeZoneSelect.js"></script>
 <script type="text/javascript" src="~/scripts/dateObject.js"></script>
+

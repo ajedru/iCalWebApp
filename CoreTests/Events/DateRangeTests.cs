@@ -7,7 +7,7 @@ namespace Core.Tests.Events
 	[TestFixture]
 	public class DateRangeTests
 	{
-		[Test]
+		/*[Test]
 		public void DurationShouldReturnProperTimeSpan()
 		{
 			//Arrange
@@ -20,6 +20,6 @@ namespace Core.Tests.Events
 
 			//Assert
 			Assert.AreEqual(new TimeSpan(10,0,0,0), result);
-		}
+		}*/
 	}
 }

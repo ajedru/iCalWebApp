@@ -1,4 +1,4 @@
-﻿@model IEnumerable<iCalWebApp.Models.EventModel>
+﻿@model IEnumerable<Core.Events.EventModel>
 
 @{
     ViewBag.Title = "EventsListView";
@@ -13,19 +13,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DateRangeModel.From)
+           From
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateRangeModel.To)
+            To
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+			Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Comment)
+            Commentary
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
+            Created
         </th>
         <th></th>
     </tr>
@@ -33,23 +33,23 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.DateRangeModel.From)
+            @Html.DisplayFor(modelItem => item.From)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateRangeModel.To)
+            @Html.DisplayFor(modelItem => item.To)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Comment)
+            @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
+            @Html.DisplayFor(modelItem => item.Created.Date)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.Guid  }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Guid })
+            @Html.ActionLink("Edit", "Edit", new {  id=item.UID  }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UID })
         </td>
     </tr>
 }

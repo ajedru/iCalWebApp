@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Core.Interfaces;
+using DDay.iCal;
 
 namespace Core.Events
 {
@@ -10,9 +10,9 @@ namespace Core.Events
 	/// Pokrywa standardowa funkcjonalność Kolekcji ale bierze pod uwage unikalny identyfikator Event 
 	/// przy Contains event (umozliwiając pominięcie implementacji mechanizmu komparatora)
 	/// </summary>
-	public class EventCollection : ICollection<IEvent>
+	public class EventCollection : ICollection<EventModel>
 	{
-		protected HashSet<IEvent> events = new HashSet<IEvent>();
+		protected HashSet<EventModel> events = new HashSet<EventModel>();
 		private bool isReadOnly;
 
 		public TimeZoneInfo TimeZone { get; private set; }
@@ -28,7 +28,7 @@ namespace Core.Events
 			TimeZone = timeZone;
 		}
 
-		public IEnumerator<IEvent> GetEnumerator()
+		public IEnumerator<EventModel> GetEnumerator()
 		{
 			foreach (var item in events)
 			{
@@ -41,11 +41,11 @@ namespace Core.Events
 			return GetEnumerator();
 		}
 
-		public IEvent Get(Guid guid)
+		public EventModel Get(string guid)
 		{
 			foreach (var ev in events)
 			{
-				if (ev.Guid == guid)
+				if (ev.UID == guid)
 				{
 					return ev;
 				}
@@ -54,9 +54,9 @@ namespace Core.Events
 			return null;
 		}
 
-		public void Add(IEvent item)
+		public void Add(EventModel item)
 		{
-			if (Contains(item.Guid))
+			if (Contains(item.UID))
 			{
 				Remove(item);
 				
@@ -70,16 +70,16 @@ namespace Core.Events
 			events.Clear();
 		}
 
-		public bool Contains(IEvent item)
+		public bool Contains(EventModel item)
 		{
-			return Contains(item.Guid);
+			return Contains(item.UID);
 		}
 
-		public bool Contains(Guid guid)
+		public bool Contains(string guid)
 		{
 			foreach (var ev in events)
 			{
-				if (ev.Guid == guid)
+				if (ev.UID == guid)
 				{
 					return true;
 				}
@@ -87,21 +87,21 @@ namespace Core.Events
 			return false;
 		}
 
-		public void CopyTo(IEvent[] array, int arrayIndex)
+		public void CopyTo(EventModel[] array, int arrayIndex)
 		{
 			events.CopyTo(array, arrayIndex);
 		}
 
-		public bool Remove(IEvent item)
+		public bool Remove(EventModel item)
 		{
-			int succeed = events.RemoveWhere(ev => ev.Guid == item.Guid);
+			int succeed = events.RemoveWhere(ev => ev.UID == item.UID);
 
 			return succeed > 0;
 		}
 
-		public bool Remove(Guid id)
+		public bool Remove(string id)
 		{
-			IEvent ev = Get(id);
+			EventModel ev = Get(id);
 			if (ev == null)
 			{
 				return false;

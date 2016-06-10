@@ -1,4 +1,5 @@
 ﻿using System;
+using DDay.iCal;
 
 namespace Core.Interfaces
 {
@@ -7,8 +8,8 @@ namespace Core.Interfaces
     /// </summary>
     public interface IDateRange
     {
-        DateTime From { get; set; }
-        DateTime To { get; set; }
+        IDateTime From { get; set; }
+        IDateTime To { get; set; }
        
         TimeSpan Duration { get; }
     }

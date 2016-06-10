@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace Core.Tests.Events
 {
-	[TestFixture]
+	/*[TestFixture]
 	public class EventTests
 	{
 		[Test]
@@ -34,5 +34,5 @@ namespace Core.Tests.Events
 				myEvent.Title, myEvent.Comment, myEvent.DateRange.From.ToString(), myEvent.DateRange.To.ToString(), myEvent.CreationDate.ToString(), myEvent.Guid.ToString()
 			});	
 		}
-	}
+	}*/
 }

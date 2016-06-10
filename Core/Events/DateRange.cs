@@ -1,25 +1,26 @@
 ﻿using System;
 using Core.Interfaces;
+using DDay.iCal;
 
 namespace Core.Events
 {
 	public class DateRange : IDateRange
 	{
 
-		public DateRange( DateTime from, DateTime to)
+		public DateRange(IDateTime from, IDateTime to)
 		{
 			From = from;
 			To = to;
 		}
 
-		public DateTime From { get; set; }
-		public DateTime To { get; set; }
+		public IDateTime From { get; set; }
+		public IDateTime To { get; set; }
 
 		public TimeSpan Duration
 		{
 			get
 			{
-				TimeSpan difference = To - From;
+				TimeSpan difference = To.Subtract(From);
 				return difference;
 			}
 		}

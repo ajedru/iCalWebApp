@@ -4,13 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Core.Events;
+using Core.Interfaces;
 using iCalWebApp.Models;
+using Event = DDay.iCal.Event;
 
 namespace iCalWebApp.Controllers
 {
 	public class EventsListController : Controller
 	{
-		//public List<EventModel> Events = new List<EventModel>();
+		//public List<Event> Events = new List<Event>();
 		// GET: EventsList
 		public ActionResult Index()
 		{
@@ -18,29 +20,29 @@ namespace iCalWebApp.Controllers
 		}
 
 		/// <summary>
-		/// Dodaje nowy obiekt EventModel do listy zdefiniowanych eventów
+		/// Dodaje nowy obiekt Event do listy zdefiniowanych eventów
 		/// </summary>
 		/// <param name="model">obiekt modelu do dodania</param>
 		private void AddEvent(EventModel model)
 		{
-			EventCollectionModel events = FetchEvents();
+			EventCollection events = FetchEvents();
 
 			events.Add(model);
 		}
 
 		/// <summary>
-		/// Pobiera zapisaną w sesji listę obiektów EventModel
+		/// Pobiera zapisaną w sesji listę obiektów Event
 		/// </summary>
-		/// <returns>Zwraca listę EventModel</returns>
-		private EventCollectionModel FetchEvents()
+		/// <returns>Zwraca listę Event</returns>
+		private EventCollection FetchEvents()
 		{
 			if (Session["Events"] == null)
 			{
-				Session["Events"] = new EventCollectionModel();
+				Session["Events"] = new EventCollection();
 				return FetchEvents();
 			}
 
-			return (EventCollectionModel) Session["Events"];
+			return (EventCollection) Session["Events"];
 
 		}
 	  
@@ -70,7 +72,7 @@ namespace iCalWebApp.Controllers
 		}
 
 		// GET: EventsList/Edit/5
-		public ActionResult Edit(Guid id)
+		public ActionResult Edit(string id)
 		{
 			EventModel model = FetchEvents().Get(id);
 			return View(model);
@@ -82,7 +84,7 @@ namespace iCalWebApp.Controllers
 		{
 			try
 			{
-				//EventModel old = FetchEvents().Get(id);
+				//Event old = FetchEvents().Get(id);
 				//model.Guid = old.Guid;
 				if (ModelState.IsValid)
 				{
@@ -101,17 +103,17 @@ namespace iCalWebApp.Controllers
 		/// <summary>
 		/// Usuwa podany event z listy eventów na stronie
 		/// </summary>
-		/// <param name="model">Model do usunięcia</param>
+		/// <param name="id">guid modelu do usunięcia</param>
 		/// <returns></returns>
 		// GET: EventsList/Delete/5
-		public ActionResult Delete(Guid id)
+		public ActionResult Delete(string id)
 		{
 			return View(FetchEvents().Get(id));
 		}
 
 		// POST: EventsList/Delete/5
 		[HttpPost]
-		public ActionResult Delete(Guid id, FormCollection collection)
+		public ActionResult Delete(string id, FormCollection collection)
 		{
 			try
 			{
