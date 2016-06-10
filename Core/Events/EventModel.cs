@@ -14,7 +14,7 @@ namespace Core.Events
 			set { DTStart = new iCalDateTime(value); }
 			get
 			{
-				if (DTStart != null)
+				if (DTStart != null)			
 				{
 					return CreateDate(DTStart);
 
@@ -67,17 +67,28 @@ namespace Core.Events
 			}
 		}
 
-		public TimeSpan DurationObj
+
+		public DateTime DateFromTimeSpan(TimeSpan span)
+		{
+			return From - span;
+		}
+
+		public TimeSpan DateToTimeSpan(DateTime date)
+		{
+			return From - date;
+		}
+
+		public DateTime DurationObj
 		{
 			get
 			{
 				if (AlarmObj.Trigger != null && AlarmObj.Trigger.Duration != null)
 				{
-					return (TimeSpan) AlarmObj.Trigger.Duration;
+					return DateFromTimeSpan((TimeSpan) AlarmObj.Trigger.Duration);
 				}
 				else
 				{
-					return new TimeSpan(0);
+					return new DateTime();
 				}
 			}
 
@@ -88,7 +99,7 @@ namespace Core.Events
 					AlarmObj.Trigger = new Trigger();
 				}
 
-				AlarmObj.Trigger.Duration = value;
+				AlarmObj.Trigger.Duration = DateToTimeSpan(value);
 			}
 
 		}

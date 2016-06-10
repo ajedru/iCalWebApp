@@ -1,6 +1,6 @@
 ﻿# CoffeeScript
 window.dateChanged = (selected) ->
-	$('input[id="dateTo"]').data("DateTimePicker").minDate(selected.date);
+	$("input[id='dateTo']").minDate(selected.date);
 	$('input[id="alarm"]').data("DateTimePicker").maxDate(selected.date);
 
 $(document).ready(
@@ -9,22 +9,33 @@ $(document).ready(
 		curDate = $(dateInput).val()
 	else 
 		curDate = new moment()
+		
+	
+	minDate = new moment()
 	
 	$(dateInput).datetimepicker(
 		format: "L LT"
-		minDate: curDate
+		minDate: minDate
 	).on('dp.change', dateChanged)
+	
+	$("input[id='dateFrom']").data("DateTimePicker").date(curDate)
 		
 	dateInput = "input[id='dateTo']"	
 	if $(dateInput).val() != ""
-		curDate = $(dateInput).val()
+		curDate = $(dateInput).val()		
 	else 
 		curDate = new moment()
+	
+	
+		
+	minDate = new moment()
 
 	$(dateInput).datetimepicker(
 		format: "L LT"
-		minDate: curDate
+		minDate: minDate
 	)
+	$("input[id='dateTo']").data("DateTimePicker").date(curDate)
+	
 	
 	dateInput = "input[id='alarm']"
 	startDate = $("input[id='dateFrom']").data("DateTimePicker").date()
