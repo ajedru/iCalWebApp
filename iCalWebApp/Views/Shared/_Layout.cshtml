@@ -10,7 +10,7 @@
     <script src="~/Scripts/jquery-2.2.1.min.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
 </head>
-<body>
+<body class="body-content">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -28,11 +28,13 @@
         </div>
     </div>
 
-    <div class="container body-content">
+    <div class="container content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </div>
+
+    <div class="navbar-inverse navbar-fixed-bottom">
+        <footer class="text-center text-color">
+            <p>&copy; @DateTime.Now.Year - iCallendar Web Application</p>
         </footer>
     </div>
 
