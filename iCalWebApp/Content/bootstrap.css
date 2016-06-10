@@ -3934,6 +3934,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .container-fluid > .navbar-collapse {
   margin-right: -15px;
   margin-left: -15px;
+
 }
 @media (min-width: 768px) {
   .container > .navbar-header,
@@ -4194,8 +4195,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+  background-color: #23C324;
+  border-color: #23C324;
 }
 .navbar-default .navbar-brand {
   color: #777;
@@ -4290,15 +4291,15 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 .navbar-inverse {
-  background-color: #222;
-  border-color: #080808;
+  background-color: #3A525E;
+  border-color: #344954;
 }
 .navbar-inverse .navbar-brand {
-  color: #9d9d9d;
+  color: #101112;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #fff;
+  color: #8B9499;
   background-color: transparent;
 }
 .navbar-inverse .navbar-text {

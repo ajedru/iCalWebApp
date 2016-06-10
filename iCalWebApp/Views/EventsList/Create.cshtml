@@ -79,7 +79,7 @@
 		</div>
 			<div class="form-group">
 				<div class="col-md-offset-2 col-md-10">
-					<input type="submit" value="Create" class="btn btn-default" />
+					<input type="submit" value="Create" class="button" />
 				</div>
 			</div>
 		</div>
@@ -87,7 +87,7 @@
 }
 
 <div>
-	@Html.ActionLink("Back to List", "Index")
+    <input type="button" value="Back" class="button" onclick="location.href='@Url.Action("Index")'" />
 </div>
 
 <script src="~/Scripts/jquery.validate.min.js"></script>

@@ -5,11 +5,13 @@
     Layout = "../Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2></h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+<p class="form-actions no-color">
+    <input type="button" value="Create" class="button" onclick="location.href='@Url.Action("Create")'" />
+    </p>
+
 <table class="table">
     <tr>
         <th>
@@ -48,8 +50,8 @@
             @Html.DisplayFor(modelItem => item.CreationDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.Guid  }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Guid })
+            <input type="button" value="Edit" class="button-edit-delete" onclick="location.href='@Url.Action("Edit", new { id=item.Guid })'" />
+            <input type="button" value="Delete" class="button-edit-delete" onclick="location.href='@Url.Action("Delete", new { id=item.Guid })'" />
         </td>
     </tr>
 }
