@@ -63,18 +63,31 @@
 			    </div>
 		    </div>
 
+		    <div class="form-group">
+			    @Html.LabelFor(model => model.To, htmlAttributes : new { @class = "control-label col-md-2", @for = "dateFrom" })
+			    <div class="col-md-10">
+				    <div class="input-group">
+					    <div class="input-group-addon">
+						    <i class="fa fa-calendar-plus-o">
+						    </i>
+					    </div>
+					    @Html.EditorFor(model => model.To, new { @Value = Model.To.ToString("dd/MM/yyyy HH:mm"), htmlAttributes = new { @class = "form-control", @id = "dateTo", @placeholder = "dd/MM/yyyy HH:mm", @type = "text" } })
+					    @Html.ValidationMessageFor(model => model.To, "", new { @class = "text-danger" })
+				    </div>
+			    </div>
+		    </div>
+
 			<div class="form-group">
-				@Html.LabelFor(model => model.To, htmlAttributes: new { @class = "control-label col-md-2", @for = "dateFrom" })
+				@Html.LabelFor(model => model.IsAllDay, "All day event", htmlAttributes: new { @class = "control-label col-md-2" })
 				<div class="col-md-10">
 					<div class="input-group">
 						<div class="input-group-addon">
 							<i class="fa fa-calendar-plus-o">
 							</i>
 						</div>
-						@Html.EditorFor(model => model.To, new { @Value = Model.To.ToString("dd/MM/yyyy HH:mm"), htmlAttributes = new { @class = "form-control", @id = "dateTo", @placeholder = "dd/MM/yyyy HH:mm", @type = "text" } })
-						@Html.ValidationMessageFor(model => model.To, "", new { @class = "text-danger" })
+						@Html.CheckBoxFor(model => model.IsAllDay, htmlAttributes: new { @class = "form-control", @id = "timezone-select-to"})
 					</div>
-				</div>
+				</div>S
 			</div>
 
 	    </div>

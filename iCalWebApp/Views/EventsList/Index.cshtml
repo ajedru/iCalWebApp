@@ -24,9 +24,12 @@
         <th>
             Commentary
         </th>
-        <th>
-            Created
-        </th>
+	    <th>
+		    Created
+	    </th>
+		<th>
+			All day event
+		</th>
         <th></th>
     </tr>
 
@@ -44,10 +47,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Created.Date)
-        </td>
-        <td>
+	    <td>
+		    @Html.DisplayFor(modelItem => item.Created.Date)
+	    </td>
+		<td>
+			@Html.DisplayFor(modelItem => item.IsAllDay)
+		</td>
+
+	    <td>
             @Html.ActionLink("Edit", "Edit", new {  id=item.UID  }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.UID })
         </td>

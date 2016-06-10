@@ -52,7 +52,15 @@
 		    @Html.DisplayFor(model => model.Created)
 	    </dd>
 
-		@Html.HiddenFor(model => model.UID)
+		<dt>
+			Is all day event
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.IsAllDay)
+		</dd>
+
+	    @Html.HiddenFor(model => model.UID)
 
     </dl>
 
