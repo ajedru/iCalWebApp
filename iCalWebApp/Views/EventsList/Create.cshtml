@@ -1,4 +1,5 @@
-﻿@model Core.Events.EventModel
+﻿@using MvcCheckBoxList.Model
+@model Core.Events.EventModel
 
 @{
 	ViewBag.Title = "CreateView";
@@ -145,7 +146,7 @@
 				</div>
 
 				<div class="form-group">
-					@Html.LabelFor(model => model.DurationObj, "Reminder time", htmlAttributes: new { @class = "control-label col-md-2", @for="alarm" })
+					@Html.LabelFor(model => model.DurationObj, "Reminder time", htmlAttributes : new { @class = "control-label col-md-2", @for = "alarm" })
 					<div class="col-md-10">
 						<div class="input-group">
 							<div class="input-group-addon">
@@ -156,6 +157,23 @@
 						</div>
 					</div>
 				</div>
+
+				@*<div class="form-group">
+					@Html.LabelFor(model => model.RecurrenceRules, "Repeat", htmlAttributes: new { @class = "control-label col-md-2" })
+
+					
+						<div class="col-md-10">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-calendar-o">
+									</i>
+								</div>
+								@Html.CheckBoxListFor(model => model.AvailableFrequency, model => model.AvailableFrequency, model => model.SelectedFrequency, Position.Vertical)
+							</div>
+						</div>
+					
+					
+				</div>*@
 			</div>
 		</div>
 

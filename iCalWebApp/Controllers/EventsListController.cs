@@ -60,6 +60,10 @@ namespace iCalWebApp.Controllers
 			{
 				if (ModelState.IsValid)
 				{
+					/*if (model.SelectedFrequency.Any())
+					{
+						model.Recurrence = model.SelectedFrequency;
+					}*/
 					AddEvent(model);
 				}
 
@@ -118,6 +122,26 @@ namespace iCalWebApp.Controllers
 			try
 			{
 				FetchEvents().Remove(id);
+
+				return RedirectToAction("Index");
+			}
+			catch
+			{
+				return View();
+			}
+		}
+
+		public ActionResult DeleteAll()
+		{
+			return View(FetchEvents());
+		}
+
+		[HttpPost]
+		public ActionResult DeleteAll(FormCollection collection)
+		{
+			try
+			{
+				FetchEvents().Clear();
 
 				return RedirectToAction("Index");
 			}

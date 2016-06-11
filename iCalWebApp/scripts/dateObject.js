@@ -3,8 +3,8 @@
   var curDate, dateInput, minDate, startDate;
 
   window.dateChanged = function(selected) {
-    $("input[id='dateTo']").minDate(selected.date);
-    return $('input[id="alarm"]').data("DateTimePicker").maxDate(selected.date);
+    $("input[id='dateTo']").data("DateTimePicker").minDate(selected.date);
+    return $("input[id='alarm']").data("DateTimePicker").maxDate(selected.date);
   };
 
   $(document).ready(dateInput = "input[id='dateFrom']", $(dateInput).val() !== "" ? curDate = $(dateInput).val() : curDate = new moment(), minDate = new moment(), $(dateInput).datetimepicker({

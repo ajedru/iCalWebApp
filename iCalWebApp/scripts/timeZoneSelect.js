@@ -3,17 +3,17 @@
   var key, value, zones;
 
   $(document).ready(zones = {
-    "GM": "GMT Standard Time",
-    "UT": "UTC",
-    "WE": "W. Europe Standard Time",
-    "CE": "Central Europe Standard Time",
-    "GT": "GTB Standard Time",
-    "EG": "Egypt Standard Time",
-    "SA": "South Africa Standard Time",
-    "AS": "Arabic Standard Time",
-    "RU": "Russian Standard Time",
-    "IS": "India Standard Time",
-    "CH": "China Standard Time"
+    "GMT Standard Time": "GMT Standard Time",
+    "UTC": "UTC",
+    "W. Europe Standard Time": "W. Europe Standard Time",
+    "Central Europe Standard Time": "Central Europe Standard Time",
+    "GTB Standard Time": "GTB Standard Time",
+    "Egypt Standard Time": "Egypt Standard Time",
+    "South Africa Standard Time": "South Africa Standard Time",
+    "Arabic Standard Time": "Arabic Standard Time",
+    "Russian Standard Time": "Russian Standard Time",
+    "India Standard Time": "India Standard Time",
+    "China Standard Time": "China Standard Time"
   }, (function() {
     var _results;
     _results = [];

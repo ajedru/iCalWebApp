@@ -1,7 +1,7 @@
 ﻿# CoffeeScript
 window.dateChanged = (selected) ->
-	$("input[id='dateTo']").minDate(selected.date);
-	$('input[id="alarm"]').data("DateTimePicker").maxDate(selected.date);
+	$("input[id='dateTo']").data("DateTimePicker").minDate(selected.date);
+	$("input[id='alarm']").data("DateTimePicker").maxDate(selected.date);
 
 $(document).ready(
 	dateInput = "input[id='dateFrom']"

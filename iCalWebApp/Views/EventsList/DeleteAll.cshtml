@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Core.Events.EventModel>
+
+@{
+	ViewBag.Title = "Deleting All Elements";
+	Layout = "../Shared/_Layout.cshtml";
+}
+
+<h2>Delete all</h2>
+
+<h3>Are you sure you want to delete all events?</h3>
+
+<table class="table">
+	<tr>
+		<th>
+			From
+		</th>
+		<th>
+			To
+		</th>
+		<th>
+			Name
+		</th>
+		<th>
+			Commentary
+		</th>
+		<th>
+			Created
+		</th>
+		<th>
+			All day event
+		</th>
+		<th>
+			Alarm time
+		</th>
+		<th>
+			Alarm description
+		</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.From)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.To)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Description)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.CreatedObj)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.IsAllDay)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DurationObj)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.AlarmObj.Description)
+			</td>
+		</tr>
+	}
+
+</table>
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+
+	<div col-md-offset-2 col-md-10">
+		<input value="Back" class="button" onclick="location.href='@Url.Action("Index")'" />
+		<input type="submit" value="Delete all" class="button" />
+	</div>
+}
+
+

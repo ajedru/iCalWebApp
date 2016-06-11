@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Web.Mvc;
 using Core.Interfaces;
 using DDay.iCal;
 
@@ -26,8 +28,64 @@ namespace Core.Events
 			}
 		}
 
-		private DateTime CreateDate(IDateTime date)
+		/// <summary>
+		/// WIP wciaz nie dziala
+		/// </summary>
+		/*private IEnumerable<FrequencyType> availableFrequency = new[]
 		{
+			FrequencyType.Daily,
+			FrequencyType.Weekly,
+			FrequencyType.Monthly,
+			FrequencyType.Yearly
+		};
+
+		public IEnumerable<FrequencyType> AvailableFrequency
+		{
+			get { return availableFrequency; }
+			set { return; }
+		}
+
+		public IEnumerable<FrequencyType> SelectedFrequency { get; set; }*/
+
+		/// <summary>
+		/// WIP wciaż nie działa
+		/// </summary>
+		/// <param name="date"></param>
+		/// <returns></returns>
+		/*public IEnumerable<FrequencyType> Recurrence
+		{
+			get
+			{
+				if (RecurrenceRules == null)
+				{
+					return new FrequencyType[0];
+				}
+
+				List<FrequencyType> freq = new List<FrequencyType>();
+				foreach (var pattern in RecurrenceRules)
+				{
+					freq.Add(pattern.Frequency);
+				}
+
+				return freq;
+			}
+			set
+			{
+				if (RecurrenceRules == null)
+				{
+					RecurrenceRules = new List<IRecurrencePattern>();
+				}
+
+				foreach (var freq in value)
+				{
+					RecurrenceRules.Clear();
+					RecurrenceRules.Add(new RecurrencePattern(freq));
+				}
+			}
+		}*/
+		
+		private DateTime CreateDate(IDateTime date)
+		{	
 			DateTime result = new DateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second, date.Date.Kind);
 			return result;
 		}
@@ -40,7 +98,25 @@ namespace Core.Events
 			{
 				if (DTEnd != null)
 				{
+					
 					return CreateDate(DTEnd);
+				}
+				else
+				{
+					return new DateTime();
+				}
+			}
+		}
+
+		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:G}")]
+		public DateTime CreatedObj
+		{
+			set { Created = new iCalDateTime(value); }
+			get
+			{
+				if (Created != null)
+				{
+					return CreateDate(Created);
 				}
 				else
 				{
@@ -103,5 +179,7 @@ namespace Core.Events
 			}
 
 		}
+
+	
 	}
 }
