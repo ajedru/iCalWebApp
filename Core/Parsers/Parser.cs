@@ -8,7 +8,7 @@ namespace Core.Events
 {
 	public class Parser : IParser
 	{
-		private iCalendar calendar;
+		public iCalendar calendar { get; private set; }
 
 		public Parser()
 		{

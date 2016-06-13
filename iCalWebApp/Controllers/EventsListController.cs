@@ -7,6 +7,7 @@ using Core.Events;
 using Core.Interfaces;
 using iCalWebApp.Models;
 using Event = DDay.iCal.Event;
+using System.IO;
 
 namespace iCalWebApp.Controllers
 {
@@ -136,7 +137,19 @@ namespace iCalWebApp.Controllers
 			return View(FetchEvents());
 		}
 
-		[HttpPost]
+        public ActionResult DownloadCalendar()
+        {
+            Parser iCalParser = new Parser();
+            foreach(Event iCalEvent in FetchEvents())
+                iCalParser.calendar.Events.Add(iCalEvent);
+            using (StreamWriter outputFile = new StreamWriter(String.Format(@"files\{0}.ics", Guid.NewGuid())))
+            {
+                outputFile.Write(iCalParser.ParseToString());
+            }
+            return null;
+        }
+
+        [HttpPost]
 		public ActionResult DeleteAll(FormCollection collection)
 		{
 			try
