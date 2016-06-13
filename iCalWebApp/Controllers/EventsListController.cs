@@ -140,9 +140,10 @@ namespace iCalWebApp.Controllers
         public ActionResult DownloadCalendar()
         {
             Parser iCalParser = new Parser();
-            foreach(Event iCalEvent in FetchEvents())
-                iCalParser.calendar.Events.Add(iCalEvent);
-            using (StreamWriter outputFile = new StreamWriter(String.Format(@"files\{0}.ics", Guid.NewGuid())))
+            String filePath = String.Format(@"files\{0}.ics", Guid.NewGuid()); // this is file path
+            foreach (Event iCalEvent in FetchEvents())
+                iCalParser.calendar.Events.Add(iCalEvent);       
+            using (StreamWriter outputFile = new StreamWriter(filePath))
             {
                 outputFile.Write(iCalParser.ParseToString());
             }
