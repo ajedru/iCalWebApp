@@ -11,5 +11,6 @@ namespace Core.Interfaces
     {
         DDay.iCal.Event CreateEvent(string summary, string description, DateTime start, DateTime end, Alarm alarm);
         void AddEventToCalendar(iCalendar calendar, DDay.iCal.Event cacheEvent);
+        Alarm CreateAlarm(int days, int hours, int minutes, int seconds);
     }
 }

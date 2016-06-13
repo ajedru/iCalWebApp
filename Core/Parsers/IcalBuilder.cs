@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Core.Parsers
 {
-    class IcalBuilder : IIcalBuilder
+    public class IcalBuilder : IIcalBuilder
     {
         public DDay.iCal.Event CreateEvent(string summary, string description, DateTime start, DateTime end, Alarm alarm)
         {
@@ -27,7 +27,7 @@ namespace Core.Parsers
             calendar.Events.Add(cacheEvent);
         }
 
-        private Alarm CreateAlarm(int days, int hours, int minutes, int seconds)
+        public Alarm CreateAlarm(int days, int hours, int minutes, int seconds)
         {
             if (days == 0 & hours == 0 & minutes == 0 & seconds == 0)
                 return null;
