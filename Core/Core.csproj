@@ -74,15 +74,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Events\DateRange.cs" />
     <Compile Include="Events\EventModel.cs" />
-    <Compile Include="Events\EventParser.cs" />
     <Compile Include="Events\EventCollection.cs" />
     <Compile Include="Interfaces\IIcalBuilder.cs" />
     <Compile Include="Parsers\IcalBuilder.cs" />
     <Compile Include="Parsers\Parser.cs" />
-    <Compile Include="Interfaces\IDateRange.cs" />
-    <Compile Include="Interfaces\IEvent.cs" />
     <Compile Include="Interfaces\IParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

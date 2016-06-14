@@ -141,13 +141,18 @@ namespace iCalWebApp.Controllers
         {
             Parser iCalParser = new Parser();
             String filePath = String.Format(@"files\{0}.ics", Guid.NewGuid()); // this is file path
-            foreach (Event iCalEvent in FetchEvents())
-                iCalParser.calendar.Events.Add(iCalEvent);       
-            using (StreamWriter outputFile = new StreamWriter(filePath))
+
+			foreach (EventModel @event in FetchEvents())
+	        {
+		        iCalParser.calendar.Events.Add(@event);
+	        }
+
+			using (StreamWriter outputFile = new StreamWriter(filePath))
             {
                 outputFile.Write(iCalParser.ParseToString());
             }
-            return null;
+
+			return null;
         }
 
         [HttpPost]
