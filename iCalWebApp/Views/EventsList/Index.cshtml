@@ -13,91 +13,95 @@
 
 @if (!Model.Any())
 {
-    <div class="alert alert-info">
-        <strong>Info!</strong> Start adding events to see a list of them
-    </div>
+	<div class="alert alert-info">
+		<strong>Info!</strong> Start adding events to see a list of them
+	</div>
 }
 else
 {
-    <table class="table">
-        <tr>
-            <th>
-                From
-            </th>
-            <th>
-                To
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                Commentary
-            </th>
-            <th>
-                Created
-            </th>
-            <th>
-                All day event
-            </th>
-            <th>
-                Alarm time
-            </th>
-            <th>
-                Alarm description
-            </th>
-            <th></th>
-        </tr>
+	<table class="table">
+		<tr>
+			<th>
+				From
+			</th>
+			<th>
+				To
+			</th>
+			<th>
+				Name
+			</th>
+			<th>
+				Commentary
+			</th>
+			<th>
+				Created
+			</th>
+			<th>
+				All day event
+			</th>
+			<th>
+				Alarm time
+			</th>
+			<th>
+				Alarm description
+			</th>
+			<th></th>
+		</tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.From)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.To)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedObj)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsAllDay)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DurationObj)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AlarmObj.Description)
-                </td>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.From)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.To)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Summary)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Description)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.CreatedObj)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.IsAllDay)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DurationObj)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.AlarmObj.Description)
+				</td>
 
-                <td>
-                    <input type="button" value="Edit" class="button-edit-delete" onclick="location.href = '@Url.Action("Edit", new { id = item.UID })'" />
-                    <input type="button" value="Delete" class="button-edit-delete" onclick="location.href = '@Url.Action("Delete", new { id = item.UID })'" />
-                </td>
-            </tr>
-        }
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Total items:</td>
-            <td>@Model.Count()</td>
-            <td>
-                <input type="button" value="Delete all" class="button-edit-delete" onclick="location.href = '@Url.Action("DeleteAll")'" />
-            </td>
-        </tr>
-    </table>
+				<td>
+					<input type="button" value="Edit" class="button-edit-delete" onclick="location.href = '@Url.Action("Edit", new { id = item.UID })'"/>
+					<input type="button" value="Delete" class="button-edit-delete" onclick="location.href = '@Url.Action("Delete", new { id = item.UID })'"/>
+				</td>
+			</tr>
+		}
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>Total items:</td>
+			<td>@Model.Count()</td>
+			<td>
+				<input type="button" value="Delete all" class="button-edit-delete" onclick="location.href = '@Url.Action("DeleteAll")'"/>
+
+			</td>
+		</tr>
+
+	</table>
+
+	<input type="button" value="Download" class="button-edit-delete" onclick="location.href = '@Url.Action("DownloadCalendar")'" />
 }
-
+		
     @*<div id="modal-container" class="modal fade"
          tabindex="-1" role="dialog">*@
         <div class="modal-content modal-upload" style="display: none;">

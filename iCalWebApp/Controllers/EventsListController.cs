@@ -142,7 +142,7 @@ namespace iCalWebApp.Controllers
         public ActionResult DownloadCalendar()
         {
             Parser iCalParser = new Parser();
-            String filePath = String.Format(@"files\{0}.ics", Guid.NewGuid()); // this is file path
+            string filePath = Server.MapPath(string.Format(@"~\files\{0}.ics", Guid.NewGuid())); // this is file path
 
 			foreach (EventModel @event in FetchEvents())
 	        {

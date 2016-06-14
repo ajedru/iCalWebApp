@@ -20,37 +20,36 @@
 		<h4>Event</h4>
 		<hr />
 		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-		<div class="list-group-item">
-			<div class="form-group">
-				@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-				<div class="col-md-10">
-					<div class="input-group">
-						<div class="input-group-addon">
-							<i class="fa fa-commenting-o">
-							</i>
-						</div>
-						@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-						@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-					</div>
-				</div>
-			</div>
+	    <div class="list-group-item">
+	        <div class="form-group">
+	            @Html.LabelFor(model => model.Summary, htmlAttributes: new {@class = "control-label col-md-2"})
+	            <div class="col-md-10">
+	                <div class="input-group">
+	                    <div class="input-group-addon">
+	                        <i class="fa fa-commenting-o">
+	                        </i>
+	                    </div>
+	                    @Html.EditorFor(model => model.Summary, new {htmlAttributes = new {@class = "form-control"}})
+	                    @Html.ValidationMessageFor(model => model.Summary, "", new {@class = "text-danger"})
+	                </div>
+	            </div>
+	        </div>
 
-			<div class="form-group">
-				@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-				<div class="col-md-10">
-					<div class="input-group">
-						<div class="input-group-addon">
-							<i class="fa fa-comment-o">
-							</i>
-						</div>
-						@Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-						@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-					</div>
-				</div>
-			</div>
-		</div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar-o">
+                            </i>
+                        </div>
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+	    </div>
 
-		<div class="dateRangePicker">
+	    <div class="dateRangePicker">
 			<div class="list-group-item">
 				<div class="form-group">
 					@Html.LabelFor(model => model.From, "Start date", htmlAttributes: new { @class = "control-label col-md-2", @for = "dateFrom" })
@@ -120,14 +119,9 @@
 			<div class="list-group-item">
 				<div class="form-group">
 					@Html.LabelFor(model => model.IsAllDay, "All day event", htmlAttributes: new { @class = "control-label col-md-2" })
-					<div class="col-md-10">
-						<div class="input-group">
-							<div class="input-group-addon">
-								<i class="fa fa-calendar-o">
-								</i>
-							</div>
-							@Html.CheckBoxFor(model => model.IsAllDay, htmlAttributes: new { @checked = "checked", @class = "form-control" })
-						</div>
+					<div class="col-md-1">
+     
+                        @Html.CheckBoxFor(model => model.IsAllDay, htmlAttributes: new { @checked = "checked", @class = "checkbox" })
 					</div>
 				</div>
 
