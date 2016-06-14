@@ -392,6 +392,12 @@
     <Content Include="scripts\moment.js" />
     <Content Include="scripts\moment.min.js" />
     <Content Include="scripts\npm.js" />
+    <Content Include="scripts\partialView.js">
+      <DependentUpon>partialView.coffee</DependentUpon>
+    </Content>
+    <Content Include="scripts\partialView.min.js">
+      <DependentUpon>partialView.js</DependentUpon>
+    </Content>
     <Content Include="scripts\select2.js" />
     <Content Include="scripts\select2.min.js" />
     <Content Include="scripts\timeZoneSelect.js">
@@ -400,19 +406,13 @@
     <Content Include="scripts\timeZoneSelect.min.js">
       <DependentUpon>timeZoneSelect.js</DependentUpon>
     </Content>
-    <Content Include="scripts\Utils.coffee" />
-    <Content Include="scripts\Utils.js">
-      <DependentUpon>Utils.coffee</DependentUpon>
-    </Content>
-    <Content Include="scripts\Utils.min.js">
-      <DependentUpon>Utils.js</DependentUpon>
-    </Content>
     <Content Include="Web.config" />
     <Content Include="Views\EventsList\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EventsListController.cs" />
+    <Compile Include="Extensions\HttpPostedFileBaseHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -434,6 +434,8 @@
     <Content Include="Views\EventsList\Delete.cshtml" />
     <Content Include="scripts\timeZoneSelect.coffee" />
     <Content Include="Views\EventsList\DeleteAll.cshtml" />
+    <Content Include="Views\Shared\UploadModal.cshtml" />
+    <Content Include="scripts\partialView.coffee" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -443,6 +445,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="uploads\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">

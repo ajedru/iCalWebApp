@@ -8,6 +8,7 @@ using Core.Interfaces;
 using iCalWebApp.Models;
 using Event = DDay.iCal.Event;
 using System.IO;
+using iCalWebApp.Extensions;
 
 namespace iCalWebApp.Controllers
 {
@@ -17,6 +18,7 @@ namespace iCalWebApp.Controllers
 		// GET: EventsList
 		public ActionResult Index()
 		{
+			ViewBag.Upload = false;
 			return View(FetchEvents());
 		}
 
@@ -169,5 +171,24 @@ namespace iCalWebApp.Controllers
 				return View();
 			}
 		}
+		[HttpPost]
+		public ActionResult UploadCalendar()
+		{
+			var upload = Request.Files[0];
+			if (upload.HasFile())
+			{
+				string path = Server.MapPath("~/uploads/");
+				string filename = Path.GetFileName(upload.FileName);
+				upload.SaveAs(Path.Combine(path, filename));
+			}
+			return RedirectToAction("Index");
+		}
+
+		public ActionResult VievUploadModal()
+		{
+			ViewBag.Upload = true;
+			return View("Index", FetchEvents());
+		}
+
 	}
 }

@@ -4,15 +4,15 @@
     "inputFile": "scripts/dateObject.coffee"
   },
   {
-    "outputFile": "scripts/Utils.js",
-    "inputFile": "scripts/Utils.coffee"
-  },
-  {
     "outputFile": "Content/_bootstrap-datetimepicker.css",
     "inputFile": "Content/_bootstrap-datetimepicker.less"
   },
   {
     "outputFile": "scripts/timeZoneSelect.js",
     "inputFile": "scripts/timeZoneSelect.coffee"
+  },
+  {
+    "outputFile": "scripts/partialView.js",
+    "inputFile": "scripts/partialView.coffee"
   }
 ]
