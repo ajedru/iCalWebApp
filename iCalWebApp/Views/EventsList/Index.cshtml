@@ -77,8 +77,8 @@ else
 				</td>
 
 				<td>
-					<input type="button" value="Edit" class="button-edit-delete" onclick="location.href = '@Url.Action("Edit", new { id = item.UID })'" />
-					<input type="button" value="Delete" class="button-edit-delete" onclick="location.href = '@Url.Action("Delete", new { id = item.UID })'" />
+					<input type="button" value="Edit" class="button-edit-delete" onclick="location.href = '@Url.Action("Edit", new { id = item.UID })'"/>
+					<input type="button" value="Delete" class="button-edit-delete" onclick="location.href = '@Url.Action("Delete", new { id = item.UID })'"/>
 				</td>
 			</tr>
 		}
@@ -92,9 +92,13 @@ else
 			<td>Total items:</td>
 			<td>@Model.Count()</td>
 			<td>
-				<input type="button" value="Delete all" class="button-edit-delete" onclick="location.href = '@Url.Action("DeleteAll")'" />
+				<input type="button" value="Delete all" class="button-edit-delete" onclick="location.href = '@Url.Action("DeleteAll")'"/>
+
 			</td>
 		</tr>
+
 	</table>
+
+	<input type="button" value="Download" class="button-edit-delete" onclick="location.href = '@Url.Action("DownloadCalendar")'" />
 }
 		
