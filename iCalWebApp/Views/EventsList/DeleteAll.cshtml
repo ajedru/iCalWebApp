@@ -74,8 +74,8 @@
 	@Html.AntiForgeryToken()
 
 
-	<div col-md-offset-2 col-md-10">
-		<input value="Back" class="button" onclick="location.href='@Url.Action("Index")'" />
+	<div class="col-md-offset-0 col-md-10">
+		<input type ="button" value="Back" class="button" onclick="location.href='@Url.Action("Index")'" />
 		<input type="submit" value="Delete all" class="button" />
 	</div>
 }
