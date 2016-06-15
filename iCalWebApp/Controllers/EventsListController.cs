@@ -187,13 +187,35 @@ namespace iCalWebApp.Controllers
 			}
 		}
 
+		//[HttpPost]
+		//public ActionResult UploadCalendar()
+		//{
+		//	//teamName is a string passed from a session object upon login 
+		//	string filePath = "SFiles/Submissions/" + teamName + "/";
+		//	string severFilePath = Server.MapPath(filePath);
+		//	//If directory does not exist
+		//	if (!Directory.Exists(severFilePath))
+		//	{ // if it doesn't exist, create
+
+		//		System.IO.Directory.CreateDirectory(severFilePath);
+		//	}
+
+		//	f_sourceCode.SaveAs(severFilePath + src));
+		//	f_poster.SaveAs(severFilePath + bb));
+		//}
+
+
+
+
+
+
 		[HttpPost]
 		public ActionResult UploadCalendar()
 		{
 			var upload = Request.Files[0];
 			if (upload.HasFile())
 			{
-				string path = Server.MapPath("~/uploads/");
+				string path = Server.MapPath("/");
 				string filename = Path.GetFileName(upload.FileName);
 				path = Path.Combine(path, filename);
 				upload.SaveAs(path);
