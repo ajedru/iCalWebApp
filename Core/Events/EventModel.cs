@@ -10,6 +10,21 @@ namespace Core.Events
 {
 	public class EventModel : Event
 	{
+
+		public EventModel() { }
+
+		public EventModel(IEvent @event)
+		{
+			Start = @event.Start;
+			End = @event.End;
+			Alarms.Clear();
+			Alarms.Add(@event.Alarms.FirstOrDefault());
+			Summary = @event.Summary;
+			Description = @event.Description;
+			IsAllDay = @event.IsAllDay;
+			UID = @event.UID;
+		}
+
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:G}")]
 		public DateTime From
 		{

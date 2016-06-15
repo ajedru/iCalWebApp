@@ -159,12 +159,11 @@ namespace iCalWebApp.Controllers
 			return null;
         }
 
-        public ActionResult UploadCalendar(string filePath= @"D:\Downloads\Projekt\sample.ics")
+        private void UploadCalendar(string filePath)
         {
             Parser iCalParser = new Parser();
             ICollection<IEvent> events = iCalParser.ParseToCalendar(filePath).Events;
             Session["Events"] = new EventCollection(events);
-            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -181,6 +180,7 @@ namespace iCalWebApp.Controllers
 				return View();
 			}
 		}
+
 		[HttpPost]
 		public ActionResult UploadCalendar()
 		{
@@ -189,7 +189,9 @@ namespace iCalWebApp.Controllers
 			{
 				string path = Server.MapPath("~/uploads/");
 				string filename = Path.GetFileName(upload.FileName);
-				upload.SaveAs(Path.Combine(path, filename));
+				path = Path.Combine(path, filename);
+				upload.SaveAs(path);
+				UploadCalendar(path);
 			}
 			return RedirectToAction("Index");
 		}

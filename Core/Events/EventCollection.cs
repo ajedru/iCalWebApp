@@ -33,7 +33,7 @@ namespace Core.Events
         {
             foreach (var @event in events)
             {
-                this.events.Add((EventModel)@event);
+	            this.events.Add(new EventModel(@event));
             }
                  
         }

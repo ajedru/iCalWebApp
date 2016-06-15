@@ -102,19 +102,21 @@ else
     <input type="button" value="Download" class="button-edit-delete" onclick="location.href = '@Url.Action("DownloadCalendar")'"/>
     <p></p>
 }
+@using (Html.BeginForm("UploadCalendar", "EventsList", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
 
+	<div class="modal-content modal-upload" style="display: none;">
 
-<div class="modal-content modal-upload" style="display: none;">
+		<div class="row col-md-offset-0">
+			<input type="file" name="FileUpload1"/><br/>
+			<input type="submit" name="Submit" id="Submit" class="button-edit-delete" value="Upload"/>
+			<input type="button" name="Cancel" id="Cancel" class="button-edit-delete" value="Cancel">
+		</div>
+	</div>
 
-    <div class="row col-md-offset-0">
-        <input type="file" name="FileUpload1"/><br/>
-        <input type="submit" name="Submit" id="Submit" class="button-edit-delete" value="Upload"/>
-        <input type="submit" name="Cancel" id="Cancel" class="button-edit-delete" value="Cancel">
-    </div>
-</div>
-
-
+}
 <p></p>
-<input type="button" value="Upload Calendar" class="button-edit-delete" id="upload" onclick="toggleModal()" />
+<input type="button" value="Upload Calendar" class="button-edit-delete" id="upload" onclick="toggleModal()"/>
+<input type="button" value="Download" class="button-edit-delete"  />
 <p></p>
 <script type="text/javascript" src="~/scripts/partialView.js"></script>
