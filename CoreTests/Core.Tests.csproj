@@ -61,7 +61,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Events\EventCollectionTests.cs" />
-    <Compile Include="Events\DateRangeTests.cs" />
     <Compile Include="Events\EventTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +69,9 @@
       <Project>{9200E5F8-122E-4764-9C45-BA42B8B18807}</Project>
       <Name>Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
