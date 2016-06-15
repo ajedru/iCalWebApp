@@ -36,6 +36,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DDay.iCal, Version=1.0.2.575, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Application\bin\DDay.iCal.dll</HintPath>
+    </Reference>
     <Reference Include="NCover, Version=0.1.1.38188, Culture=neutral, PublicKeyToken=a6093b7d3ebdf001">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Application\bin\NCover.dll</HintPath>

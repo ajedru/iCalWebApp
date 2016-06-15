@@ -123,22 +123,6 @@ namespace Core.Events
 			}
 		}
 
-		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:G}")]
-		public DateTime CreatedObj
-		{
-			set { Created = new iCalDateTime(value); }
-			get
-			{
-				if (Created != null)
-				{
-					return CreateDate(Created);
-				}
-				else
-				{
-					return new DateTime();
-				}
-			}
-		}
 
 		public Alarm AlarmObj
 		{
