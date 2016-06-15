@@ -64,7 +64,7 @@ else
 					@Html.DisplayFor(modelItem => item.Description)
 				</td>
 				<td>
-					<!--Html.DisplayFor(modelItem => item.CreatedObj)-->
+					@Html.DisplayFor(modelItem => item.CreatedObj)
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.IsAllDay)
@@ -99,34 +99,22 @@ else
 
 	</table>
 
-	<input type="button" value="Download" class="button-edit-delete" onclick="location.href = '@Url.Action("UploadCalendar")'" />
+    <input type="button" value="Download" class="button-edit-delete" onclick="location.href = '@Url.Action("DownloadCalendar")'"/>
+    <p></p>
 }
-		
-    @*<div id="modal-container" class="modal fade"
-         tabindex="-1" role="dialog">*@
-        <div class="modal-content modal-upload" style="display: none;">
-          dupa
-                <div class="row">
-                    <input type="file" name="FileUpload1"/><br/>
-                    <input type="submit" name="Submit" id="Submit" value="Upload"/>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-4">
-                        <button type="button" class="btn btn-default"
-                                data-dismiss="modal">
-                            Cancel
-                        </button>
-                        <button type="submit" id="approve-btn"
-                                class="btn btn-danger">
-                            Save
-                        </button>
-                    </div>
-                </div>
-                
-      
 
-        </div>
-    @*</div>*@
+
+<div class="modal-content modal-upload" style="display: none;">
+
+    <div class="row col-md-offset-0">
+        <input type="file" name="FileUpload1"/><br/>
+        <input type="submit" name="Submit" id="Submit" class="button-edit-delete" value="Upload"/>
+        <input type="submit" name="Cancel" id="Cancel" class="button-edit-delete" value="Cancel">
+    </div>
+</div>
+
+
+<p></p>
 <input type="button" value="Upload Calendar" class="button-edit-delete" id="upload" onclick="toggleModal()" />
-
+<p></p>
 <script type="text/javascript" src="~/scripts/partialView.js"></script>
