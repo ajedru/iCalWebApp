@@ -156,7 +156,13 @@ namespace iCalWebApp.Controllers
                 outputFile.Write(iCalParser.ParseToString());
             }
 
-			return null;
+            Response.ContentType = "text/calendar";
+            Response.AppendHeader("content-disposition",
+                    "attachment; filename=" + filePath);
+            Response.TransmitFile(filePath);
+            Response.End();
+
+            return null;
         }
 
         private void UploadCalendar(string filePath)
