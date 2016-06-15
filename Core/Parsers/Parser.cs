@@ -20,7 +20,14 @@ namespace Core.Events
 		public iCalendar ParseToCalendar(string content)
 		{
 			IICalendarCollection calendarColl = iCalendar.LoadFromFile(content);
-			return (iCalendar) calendarColl.First();
+		    if (calendarColl.Count >= 1)
+		    {
+		        return (iCalendar) calendarColl.First();
+		    }
+		    else
+		    {
+		        return new iCalendar();
+		    }
 		}
 
 		public string ParseToString()
