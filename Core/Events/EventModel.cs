@@ -169,12 +169,9 @@ namespace Core.Events
 			return From - date;
 		}
 
-		public bool HasAlarm
-		{
-			get { return AlarmObj.Trigger == null && AlarmObj.Trigger.Duration == null; }
-		}
+		
 
-		public DateTime DurationObj
+		public Nullable<DateTime> DurationObj
 		{
 			get
 			{
@@ -190,7 +187,7 @@ namespace Core.Events
 
 			set
 			{
-				if (value == DateTime.MinValue)
+				if (value == DateTime.MinValue || value == null)
 				{
 					return;
 				}
@@ -200,7 +197,7 @@ namespace Core.Events
 					AlarmObj.Trigger = new Trigger();
 				}
 
-				AlarmObj.Trigger.Duration = DateToTimeSpan(value);
+				AlarmObj.Trigger.Duration = DateToTimeSpan((DateTime)value);
 			}
 
 		}
