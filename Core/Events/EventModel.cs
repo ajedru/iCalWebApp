@@ -22,7 +22,7 @@ namespace Core.Events
 			Summary = @event.Summary;
 			Description = @event.Description;
 			IsAllDay = @event.IsAllDay;
-			UID = @event.UID;
+			UID = Guid.NewGuid().ToString();
 		}
 
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:G}")]
@@ -169,6 +169,11 @@ namespace Core.Events
 			return From - date;
 		}
 
+		public bool HasAlarm
+		{
+			get { return AlarmObj.Trigger == null && AlarmObj.Trigger.Duration == null; }
+		}
+
 		public DateTime DurationObj
 		{
 			get
@@ -185,6 +190,11 @@ namespace Core.Events
 
 			set
 			{
+				if (value == DateTime.MinValue)
+				{
+					return;
+				}
+
 				if (AlarmObj.Trigger == null)
 				{
 					AlarmObj.Trigger = new Trigger();

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "iCal Web App Events List";
+    ViewBag.NoAlarm = "No alarm";
     Layout = "../Shared/_Layout.cshtml";
 }
 
@@ -34,9 +35,6 @@ else
 				Commentary
 			</th>
 			<th>
-				Created
-			</th>
-			<th>
 				All day event
 			</th>
 			<th>
@@ -64,13 +62,18 @@ else
 					@Html.DisplayFor(modelItem => item.Description)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.CreatedObj)
-				</td>
-				<td>
 					@Html.DisplayFor(modelItem => item.IsAllDay)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.DurationObj)
+					@if (item.DurationObj == DateTime.MinValue)
+					{
+						@Html.ViewBag.NoAlarm
+					}
+					else
+					{
+						@Html.DisplayFor(modelItem => item.DurationObj)
+					}
+					
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.AlarmObj.Description)
@@ -88,7 +91,6 @@ else
 			<td></td>
 			<td></td>
 			<td></td>
-			<td></td>
 			<td>Total items:</td>
 			<td>@Model.Count()</td>
 			<td>
@@ -99,7 +101,7 @@ else
 
 	</table>
 
-    <input type="button" value="Download" class="button-edit-delete" onclick="location.href = '@Url.Action("DownloadCalendar")'"/>
+    <input type="button" value="Download as calendar" class="button-edit-delete" onclick="location.href = '@Url.Action("DownloadCalendar")'"/>
     <p></p>
 }
 @using (Html.BeginForm("UploadCalendar", "EventsList", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -110,13 +112,12 @@ else
 		<div class="row col-md-offset-0">
 			<input type="file" name="FileUpload1"/><br/>
 			<input type="submit" name="Submit" id="Submit" class="button-edit-delete" value="Upload"/>
-			<input type="button" name="Cancel" id="Cancel" class="button-edit-delete" value="Cancel">
 		</div>
 	</div>
 
 }
 <p></p>
 <input type="button" value="Upload Calendar" class="button-edit-delete" id="upload" onclick="toggleModal()"/>
-<input type="button" value="Download" class="button-edit-delete"  />
+
 <p></p>
-<script type="text/javascript" src="~/scripts/partialView.js"></script>
+<script type="text/javascript" src="~/scripts/uploadSlider.js"></script>

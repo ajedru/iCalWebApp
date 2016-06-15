@@ -14,5 +14,9 @@
   {
     "outputFile": "scripts/partialView.js",
     "inputFile": "scripts/partialView.coffee"
+  },
+  {
+    "outputFile": "scripts/uploadSlider.js",
+    "inputFile": "scripts/uploadSlider.coffee"
   }
 ]
