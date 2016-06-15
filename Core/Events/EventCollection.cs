@@ -14,8 +14,9 @@ namespace Core.Events
 	{
 		protected HashSet<EventModel> events = new HashSet<EventModel>();
 		private bool isReadOnly;
+        private ICollection<IEvent> events1;
 
-		public TimeZoneInfo TimeZone { get; private set; }
+        public TimeZoneInfo TimeZone { get; private set; }
 
 		public EventCollection()
 		{
@@ -28,7 +29,16 @@ namespace Core.Events
 			TimeZone = timeZone;
 		}
 
-		public IEnumerator<EventModel> GetEnumerator()
+        public EventCollection(ICollection<IEvent> events)
+        {
+            foreach (var @event in events)
+            {
+                this.events.Add((EventModel)@event);
+            }
+                 
+        }
+
+        public IEnumerator<EventModel> GetEnumerator()
 		{
 			foreach (var item in events)
 			{

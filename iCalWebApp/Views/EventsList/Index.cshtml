@@ -64,7 +64,7 @@ else
 					@Html.DisplayFor(modelItem => item.Description)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.CreatedObj)
+					<!--Html.DisplayFor(modelItem => item.CreatedObj)-->
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.IsAllDay)
@@ -99,7 +99,7 @@ else
 
 	</table>
 
-	<input type="button" value="Download" class="button-edit-delete" onclick="location.href = '@Url.Action("DownloadCalendar")'" />
+	<input type="button" value="Download" class="button-edit-delete" onclick="location.href = '@Url.Action("UploadCalendar")'" />
 }
 		
     @*<div id="modal-container" class="modal fade"

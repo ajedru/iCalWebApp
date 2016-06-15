@@ -9,6 +9,8 @@ using iCalWebApp.Models;
 using Event = DDay.iCal.Event;
 using System.IO;
 using iCalWebApp.Extensions;
+using System.Collections.ObjectModel;
+using DDay.iCal;
 
 namespace iCalWebApp.Controllers
 {
@@ -155,6 +157,14 @@ namespace iCalWebApp.Controllers
             }
 
 			return null;
+        }
+
+        public ActionResult UploadCalendar(string filePath= @"D:\Downloads\Projekt\sample.ics")
+        {
+            Parser iCalParser = new Parser();
+            ICollection<IEvent> events = iCalParser.ParseToCalendar(filePath).Events;
+            Session["Events"] = new EventCollection(events);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
