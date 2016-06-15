@@ -42,13 +42,18 @@ $(document).ready(
 	
 	if $(dateInput).val() != ""
 		curDate = $(dateInput).val()
+		empty = false
 	else 
 		curDate = startDate
+
+		empty = true
 	
 	$(dateInput).datetimepicker(
 		format: "L LT"
 		minDate: curDate
 		maxDate: startDate
 	)
+
+	if empty then $(dateInput).val("")
 	
 )

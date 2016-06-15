@@ -3,10 +3,10 @@
   var key, value, zones;
 
   $(document).ready(zones = {
+    "Central Europe Standard Time": "Central Europe Standard Time",
     "GMT Standard Time": "GMT Standard Time",
     "UTC": "UTC",
     "W. Europe Standard Time": "W. Europe Standard Time",
-    "Central Europe Standard Time": "Central Europe Standard Time",
     "GTB Standard Time": "GTB Standard Time",
     "Egypt Standard Time": "Egypt Standard Time",
     "South Africa Standard Time": "South Africa Standard Time",
