@@ -76,8 +76,6 @@
   <ItemGroup>
     <Compile Include="Events\EventModel.cs" />
     <Compile Include="Events\EventCollection.cs" />
-    <Compile Include="Interfaces\IIcalBuilder.cs" />
-    <Compile Include="Parsers\IcalBuilder.cs" />
     <Compile Include="Parsers\Parser.cs" />
     <Compile Include="Interfaces\IParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
